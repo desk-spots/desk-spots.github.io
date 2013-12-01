@@ -45,7 +45,7 @@
 		<div id="info" class="container">
 			<h3>Contribute!</h3>
 			<div id="theNumberofSpots"></div>
-      <p>Do you have a spare desk in your office and would like to add it to this list? We have a <a href="#">form</a> ready for you!</p>
+      <p>Do you have a spare desk in your office and would like to add it to this list? We have a <a href="https://docs.google.com/forms/d/1gIyareevQ-br8JBieBKHgD4gI7R04uQDRRuX6cemRt4/viewform">form</a> ready for you!</p>
 
 			<h3>Info</h3>
       <p>This website is <strong>heavily</strong> inspired and influenced by <a href="http://www.twitter.com/jlord">@jlord</a>'s <a href="http://jlord.github.io/hack-spots">hack-spots</a> project. In fact, we just forked the code and repurposed it slightly to start showing available desks and coworking spaces instead of hacking spots.</p>
@@ -72,16 +72,12 @@
 				<p class="colorText">{{address}}<p>
 				<p class="colorText">{{city}}, {{state}} {{#postcode}}, {{postcode}} {{/postcode}}</p>
 				<ul>
-			  	<li><span class="category">Wifi:</span> {{wifipassword}}</li>
-			  	<li><span class="category">Outlets:</span> {{outlets}}</li>
-			  	<li><span class="category">Couch:</span> {{couch}}</li>
-			  	<li><span class="category">Large Table:</span> {{largetable}}</li>
-			  	<li><span class="category">Outdoor Seating:</span> {{outdoorseating}}</li>
-			  	<li><span class="category">Brewing:</span> {{brewing}}</li>
-			  	<li><span class="category">Contributed By:</span> <a href="http://www.twitter.com/{{contributerstwitter}}" target="_blank">@{{contributerstwitter}}</a></li>
+			  	<li><span class="category">Drop in:</span> {{dropin}}</li>
+			  	<li><span class="category">Monthly:</span> {{monthly}}</li>
+			  	<li><span class="category">Quarterly:</span> {{quarterly}}</li>
 		  	</ul>
 		  	<ul>
-		  		<li><a href="https://maps.google.com/maps?q={{address}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
+          <li><a href="https://maps.google.com/maps?q={{address}},{{postcode}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
 		  		<li><a href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{city}},{{state}}" target="_blank">Find on Yelp</a></li>
 		  	</ul>
 		  {{/rows}}
@@ -102,15 +98,12 @@
 			<p class="colorText">{{address}}<p>
 			<p class="colorText">{{city}}, {{state}} {{#postcode}}, {{postcode}} {{/postcode}}</p>
 			<ul>
-		  	<li><span class="category">Wifi:</span> {{wifipassword}}</li>
-		  	<li><span class="category">Outlets:</span> {{outlets}}</li>
-		  	<li><span class="category">Couch:</span> {{couch}}</li>
-		  	<li><span class="category">Large Table:</span> {{largetable}}</li>
-		  	<li><span class="category">Outdoor Seating:</span> {{outdoorseating}}</li>
-		  	<li><span class="category">Brewing:</span> {{brewing}}</li>
+        <li><span class="category">Drop in:</span> {{dropin}}</li>
+        <li><span class="category">Monthly:</span> {{monthly}}</li>
+        <li><span class="category">Quarterly:</span> {{quarterly}}</li>
 	  	</ul>
 	  	<ul>
-	  		<li><a href="https://maps.google.com/maps?q={{address}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
+        <li><a href="https://maps.google.com/maps?q={{address}},{{postcode}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
 	  		<li><a href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{city}},{{state}}" target="_blank">Find on Yelp</a></li>
 	  	</ul>
 	  {{/rows}}
@@ -119,7 +112,7 @@
 	<script type="text/javascript">
 	  document.addEventListener('DOMContentLoaded', function() {
 	  	var gData
-	  	var URL = "0Ao5u1U6KYND7dFVkcnJRNUtHWUNKamxoRGg4ZzNiT3c"
+	  	var URL = "0Ajtk7NhgzNvXdFBUaXc3YUp1TE91a3BqU0F6ZlBWdHc"
 			Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } ) 
 		}) 
 
@@ -157,7 +150,7 @@
 	  		var latestCompleteSpot = []
 	  		var startWithLatestRow = data.reverse()
 	  		startWithLatestRow.forEach(function(row){
-	  			if (!row.lat || !row.long || !row.name || !row.address || !row.city || !row.state ) return
+	  			if (!row.lat || !row.long || !row.name || !row.address || !row.city || !row.postcode ) return
 	  			else latestCompleteSpot.push(row) 
 	  		})
 	  		return latestCompleteSpot[0]
